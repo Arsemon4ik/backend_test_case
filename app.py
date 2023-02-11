@@ -71,7 +71,7 @@ def put():
         if e.response['Error']['Code'] == 'NoSuchKey':
             return jsonify({f"Key does not exist!": True})
         else:
-            print("Unexpected error: %s" % e)
+            jsonify({f"Unexpected error: {e}": True}), 400
 
     except Exception as e:
         return jsonify({f"An error occurred: {e}": True}), 400
