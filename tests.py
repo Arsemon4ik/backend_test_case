@@ -1,6 +1,8 @@
 import unittest
 from app import app
 
+testapp = app.test_client()
+
 
 class SimpleFlaskTestCase(unittest.TestCase):
 
@@ -27,6 +29,27 @@ class SimpleFlaskTestCase(unittest.TestCase):
         response = tester.get('/list/newkey2')
         content_data = response.data
         self.assertTrue(b'somebin2' in content_data)
+
+    # def test_post_new_value(self):
+    #     response = self.post(key="somenewkey", value="somenewvalue")
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertIn(b'somenewvalue', response.data)
+    #
+    # def post(self, key, value):
+    #     return testapp.post('/add',
+    #                         data=dict(key=key, value=value))
+    #
+    # def get(self, key):
+    #     return testapp.get(f'/list/{key}')
+    #
+    # def update(self, key, value):
+    #     return testapp.put('/update',
+    #                        data=dict(key=key, value=value))
+    #
+    # def test_update_new_value(self):
+    #     response = self.put(key="somenewkey", value="somenewvalue2")
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertIn(b'somenewvalue2', response.data)
 
 
 if __name__ == '__main__':

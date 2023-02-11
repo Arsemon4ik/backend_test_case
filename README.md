@@ -1,10 +1,28 @@
 # backend_test_case
 
-Треба спроєктувати та написати відмовостійкий та масштабований REST-сервіс 
-для зберігання бінарних даних в будь-якому хмарному сервісі (S3, Azure Blob Storage, Dropbox і тд). 
-Доступ до даних здійснюється по ключу (key-value).
+You need to design and write a fault-tolerant and scalable REST service 
+for storing binary data in any cloud service (S3, Azure Blob Storage, Dropbox, etc.). 
+Data is accessed by key-value.
 
-Вимоги до сервісу:
-  - Операції put, get через REST
-  - Синхронний запис (дані доступні через get одразу після завершення put)
-  - Можна використовувати будь-який фреймворк, окрім Django
+Service requirements:
+  - Put, get operations via REST
+  - Synchronous writing (data is available via get immediately after the put is completed)
+  - You can use any framework except Django
+
+## Installation
+Install the dependencies and start the server.
+
+
+Flask app
+
+```sh
+python -m venv venv
+pip install -r requirements.txt
+python app.py
+```
+
+## Get-Test application
+
+```sh
+python tests.py
+```

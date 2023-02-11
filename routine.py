@@ -1,7 +1,7 @@
 import json
 import boto3
 from botocore.exceptions import ClientError
-from config import ACCESS_KEY_ID, SECRET_ACCESS_KEY
+from config import ACCESS_KEY_ID, SECRET_ACCESS_KEY, BUCKET_NAME
 
 s3 = boto3.resource(
     service_name='s3',
@@ -10,7 +10,6 @@ s3 = boto3.resource(
     aws_secret_access_key=SECRET_ACCESS_KEY
 )
 
-BUCKET_NAME = "binary-ars-test"
 
 json.load_s3 = lambda f: json.load(s3.Bucket(BUCKET_NAME).Object(key=f).get()["Body"])
 json.dump_s3 = lambda obj, f: s3.Bucket(BUCKET_NAME).Object(key=f).put(Body=json.dumps(obj))
